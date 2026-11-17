@@ -1,0 +1,18 @@
+
+spring:
+  application:
+    name: computer-shop
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:computer_shop}?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Bangkok&allowPublicKeyRetrieval=true&useSSL=false
+    username: ${DB_USER:shop}
+    password: ${DB_PASSWORD:shop1234}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+server:
+  port: ${PORT:8080}

@@ -1,0 +1,22 @@
+
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: computer_shop
+      MYSQL_USER: shop
+      MYSQL_PASSWORD: shop1234
+      MYSQL_ROOT_PASSWORD: root1234
+      TZ: Asia/Bangkok
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot1234"]
+      interval: 5s
+      retries: 20
+
+volumes:
+  mysql-data:
